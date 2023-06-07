@@ -4,7 +4,7 @@ export default function App() {
   const todos = [
     { id: 3, text: "Wash dishes", done: false },
     { id: 2, text: "Do laundry", done: false },
-    { id: 1, text: "Take shower", done: false }
+    { id: 1, text: "Take shower", done: false },
   ];
 
   return (
@@ -29,19 +29,25 @@ function TodoList({ what }) {
   );
 }
 
-function AddToDo(){
-  
+function AddToDo() {
   //will be called after the form is submitted
-  function handleAddToDo(event){
+  function handleAddToDo(event) {
     //event contains all event data passed in through form
-    //calling prevent Default to prevent page from refreshing 
+    //calling prevent Default to prevent page from refreshing
     event.preventDefault();
     
+    //The const declaration creates block-scoped constant
+    const text = event.target.elements.addTodo.value;
+    const todo = {
+      id: 4,
+      text,
+      done: false
+    };
   }
   return (
     <form onSubmit={handleAddToDo}>
-    <input placeholder="Add to do" />
-    <button type="submit"> Submit </button>
+      <input name="addTodo" placeholder="Add to do" />
+      <button type="submit"> Submit </button>
     </form>
-  )
+  );
 }
