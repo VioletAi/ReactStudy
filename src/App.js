@@ -33,6 +33,9 @@ function TodoList({ what }) {
 }
 
 function AddToDo({ addToDo }) {
+  //create a ref with useRef, hence to clear it later
+  const inputRef = React.useRef();
+
   //will be called after the form is submitted
   function handleAddToDo(event) {
     //event contains all event data passed in through form
@@ -50,10 +53,12 @@ function AddToDo({ addToDo }) {
     addToDo((prevState) => {
       return prevState.concat(todo);
     });
+
+    inputRef.current.value = "";
   }
   return (
     <form onSubmit={handleAddToDo}>
-      <input name="addTodo" placeholder="Add to do" />
+      <input ref={inputRef} name="addTodo" placeholder="Add to do" />
       <button type="submit"> Submit </button>
     </form>
   );
