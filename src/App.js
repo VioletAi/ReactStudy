@@ -5,7 +5,7 @@ export default function App() {
   //The initial value called useState with (our array of todos) and this becomes our state variable
   //A special function that allows us to update what is stored in the state variable
   const [todos, setToDos] = React.useState([
-    { id: 3, text: "Wash dishes", done: false },
+    { id: 3, text: "Wash dishes", done: true },
     { id: 2, text: "Do laundry", done: false },
     { id: 1, text: "Take shower", done: false },
   ]);
@@ -26,7 +26,14 @@ function TodoList({ what }) {
   return (
     <ul>
       {what.map((todo) => (
-        <li key={todo.id}>{todo.text}</li>
+        <li
+          style={{
+            textDecoration: todo.done ? "line-through" : "",
+          }}
+          key={todo.id}
+        >
+          {todo.text}
+        </li>
       ))}
     </ul>
   );
