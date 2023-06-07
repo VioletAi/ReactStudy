@@ -32,7 +32,10 @@ function TodoList({ what }) {
 function AddToDo(){
   
   //will be called after the form is submitted
-  function handleAddToDo(){
+  function handleAddToDo(event){
+    //event contains all event data passed in through form
+    //calling prevent Default to prevent page from refreshing 
+    event.preventDefault();
     
   }
   return (
