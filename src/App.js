@@ -15,18 +15,32 @@ export default function App() {
     <div className="App">
       <h1>TodoList</h1>
 
-      <TodoList what={todos} />
+      <TodoList what={todos} addToDo={setToDos} />
       <AddToDo addToDo={setToDos} />
     </div>
   );
 }
 
 //Every component must begin with a capital letter.
-function TodoList({ what }) {
+function TodoList({ what, addToDo }) {
+  function handleToggleTodo(todo) {
+    //three equals check whether two value are equal in both types and values
+    const updatedTodos = what.map((t) =>
+      t.id === todo.id
+        ? {
+            ...t,
+            done: !t.done
+          }
+        : t
+    );
+    addToDo(updatedTodos);
+  }
+
   return (
     <ul>
       {what.map((todo) => (
         <li
+          onDoubleClick={() => handleToggleTodo(todo)}
           style={{
             textDecoration: todo.done ? "line-through" : "",
           }}
