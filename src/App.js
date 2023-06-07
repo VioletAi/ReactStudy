@@ -8,6 +8,7 @@ export default function App() {
   ];
 
   return (
+    //attribute we used are camel case
     <div className="App">
       <h1>TodoList</h1>
 
@@ -17,6 +18,7 @@ export default function App() {
   );
 }
 
+//Every component must begin with a capital letter.
 function TodoList({ what }) {
   return (
     <ul>
@@ -28,8 +30,13 @@ function TodoList({ what }) {
 }
 
 function AddToDo(){
+  
+  //will be called after the form is submitted
+  function handleAddToDo(){
+    
+  }
   return (
-    <form>
+    <form onSubmit={handleAddToDo}>
     <input placeholder="Add to do" />
     <button type="submit"> Submit </button>
     </form>
