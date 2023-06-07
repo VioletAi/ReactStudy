@@ -47,7 +47,7 @@ function AddToDo({ addToDo }) {
       done: false,
     };
 
-    addToDo();
+    addToDo([]);
   }
   return (
     <form onSubmit={handleAddToDo}>
