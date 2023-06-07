@@ -47,7 +47,9 @@ function AddToDo({ addToDo }) {
       done: false,
     };
 
-    addToDo([]);
+    addToDo((prevState) => {
+      return prevState.concat(todo);
+    });
   }
   return (
     <form onSubmit={handleAddToDo}>
