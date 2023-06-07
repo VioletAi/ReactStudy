@@ -12,6 +12,7 @@ export default function App() {
       <h1>TodoList</h1>
 
       <TodoList what={todos} />
+      <AddToDo />
     </div>
   );
 }
@@ -24,4 +25,13 @@ function TodoList({ what }) {
       ))}
     </ul>
   );
+}
+
+function AddToDo(){
+  return (
+    <form>
+    <input placeholder="Add to do" />
+    <button type="submit"> Submit </button>
+    </form>
+  )
 }
