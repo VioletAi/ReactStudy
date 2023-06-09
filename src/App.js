@@ -24,10 +24,12 @@ export default function App() {
 //Every component must begin with a capital letter.
 function TodoList({ what, addToDo }) {
   function handleToggleTodo(todo) {
-    //three equals check whether two value are equal in both types and values
+    //map() method creates a new array populated with the results of calling a provided function on every element in the calling array
     const updatedTodos = what.map((t) =>
+    //three equals check whether two value are equal in both types and values
       t.id === todo.id
         ? {
+          //use spread syntax to include all entries in the array
             ...t,
             done: !t.done
           }
