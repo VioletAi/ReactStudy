@@ -51,17 +51,28 @@ function TodoList({ what, addToDo }) {
           >
             {todo.text}
           </span>
-          <RemoveToDo removeItem={todo} />
+          <RemoveToDo removeItem={what} setToDos={addToDo} />
         </li>
       ))}
     </ul>
   );
 }
 
-function RemoveToDo() {
+function RemoveToDo({ removeItem, setToDos }) {
+  function handleDelete() {
+    const confirmed = window.confirm(
+      "Are you sure you want to delete the todo item?"
+    );
+
+    if (confirmed) {
+      
+    }
+  }
+
   //span is a generic inline container for phrasing content
   return (
     <span
+      onClick={handleDelete}
       role="button"
       style={{
         color: "red",
