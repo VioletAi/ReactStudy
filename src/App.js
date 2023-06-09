@@ -26,12 +26,12 @@ function TodoList({ what, addToDo }) {
   function handleToggleTodo(todo) {
     //map() method creates a new array populated with the results of calling a provided function on every element in the calling array
     const updatedTodos = what.map((t) =>
-    //three equals check whether two value are equal in both types and values
+      //three equals check whether two value are equal in both types and values
       t.id === todo.id
         ? {
-          //use spread syntax to include all entries in the array
+            //use spread syntax to include all entries in the array
             ...t,
-            done: !t.done
+            done: !t.done,
           }
         : t
     );
@@ -49,9 +49,26 @@ function TodoList({ what, addToDo }) {
           key={todo.id}
         >
           {todo.text}
+          <RemoveToDo removeItem={todo} />
         </li>
       ))}
     </ul>
+  );
+}
+
+function RemoveToDo() {
+  //span is a generic inline container for phrasing content
+  return (
+    <span
+      role="button"
+      style={{
+        color: "red",
+        fontWeight: "bold",
+        marginLeft: 10,
+      }}
+    >
+      x
+    </span>
   );
 }
 
