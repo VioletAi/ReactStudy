@@ -41,14 +41,16 @@ function TodoList({ what, addToDo }) {
   return (
     <ul>
       {what.map((todo) => (
-        <li
-          onDoubleClick={() => handleToggleTodo(todo)}
-          style={{
-            textDecoration: todo.done ? "line-through" : "",
-          }}
-          key={todo.id}
-        >
-          {todo.text}
+        <li>
+          <span
+            onDoubleClick={() => handleToggleTodo(todo)}
+            style={{
+              textDecoration: todo.done ? "line-through" : "",
+            }}
+            key={todo.id}
+          >
+            {todo.text}
+          </span>
           <RemoveToDo removeItem={todo} />
         </li>
       ))}
