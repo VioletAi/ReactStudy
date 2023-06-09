@@ -5,7 +5,7 @@ export default function App() {
   //The initial value called useState with (our array of todos) and this becomes our state variable
   //A special function that allows us to update what is stored in the state variable
   const [todos, setToDos] = React.useState([
-    { id: 3, text: "Wash dishes", done: true },
+    { id: 3, text: "Wash dishes", done: false },
     { id: 2, text: "Do laundry", done: false },
     { id: 1, text: "Take shower", done: false },
   ]);
@@ -38,6 +38,10 @@ function TodoList({ what, addToDo }) {
     addToDo(updatedTodos);
   }
 
+  if (what.length == 0) {
+    return <p>There is nothing to do ٩(๑´0`๑)۶!</p>;
+  }
+
   return (
     <ul>
       {what.map((todo) => (
@@ -51,7 +55,7 @@ function TodoList({ what, addToDo }) {
           >
             {todo.text}
           </span>
-          <RemoveToDo removeItem={what} setToDos={addToDo} />
+          <RemoveToDo removeItem={todo} setToDos={addToDo} />
         </li>
       ))}
     </ul>
@@ -61,11 +65,13 @@ function TodoList({ what, addToDo }) {
 function RemoveToDo({ removeItem, setToDos }) {
   function handleDelete() {
     const confirmed = window.confirm(
-      "Are you sure you want to delete the todo item?"
+      "Are you sure you want to delete the todo item? (●′ω`●) "
     );
 
     if (confirmed) {
-      
+      setToDos((deleteToDo) => {
+        return deleteToDo.filter((t) => t.id !== removeItem.id);
+      });
     }
   }
 
@@ -98,7 +104,7 @@ function AddToDo({ addToDo }) {
     //The const declaration creates block-scoped constant
     const text = event.target.elements.addTodo.value;
     const todo = {
-      id: 4,
+      id: Math.random(),
       text,
       done: false,
     };
